@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SessionManagementApp.Models;
 
@@ -15,16 +16,18 @@ namespace SessionManagementApp.Controllers
             return View();
         }
 
+        [Authorize]
         public IActionResult About()
         {
-            ViewData["Message"] = "Your application description page.";
+            ViewData["Message"] = "Your application description page. This page is only accessible to logged in users.";
 
             return View();
         }
 
+        [AllowAnonymous]
         public IActionResult Contact()
         {
-            ViewData["Message"] = "Your contact page.";
+            ViewData["Message"] = "Your contact page. This page is accessible to everyone.";
 
             return View();
         }

@@ -12,5 +12,7 @@ namespace SessionManagementApp.Data
             : base(options)
         {
         }
+
+        public DbSet<SessionManagementApp.Models.Movie> Movie { get; set; }
     }
 }
